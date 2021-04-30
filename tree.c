@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-const int	NUM_NODES = 3;
+const int	NUM_NODES = 100;
 
 typedef struct Node {
 	int		value;
@@ -18,26 +18,28 @@ allocateNode(int i)
 };
 
 
-void 
-printNodes(struct Node *head)
-{
-	while (head != NULL) {
-		printf("Node: %d", head->value);
-		struct Node    *oldHead;
-		oldHead = head;
-		head = head->next;
-		free(oldHead);
-	}
-	return;
-};
-
-void 
+void
 printNode(struct Node *node)
 {
 	printf("Node{value: %d, next: %d}\n", node->value, (int)node->next);
 }
 
-int 
+void
+printNodes(struct Node *head)
+{
+    int listExhausted = 0;
+	while (!listExhausted) {
+		printNode(head);
+        if (head->next != NULL) {
+          head = head->next;
+        } else {
+          listExhausted = 1;
+        }
+	}
+	return;
+};
+
+int
 main()
 {
 
@@ -52,10 +54,9 @@ main()
 	for (int i = 1; i < NUM_NODES; i++) {
 		struct Node    *next = allocateNode(i);
 		current->next = next;
-		printNode(current);
 		current = next;
 	}
 
-	/* printNodes(headPtr); */
+	printNodes(headPtr);
 	return 0;
 }
