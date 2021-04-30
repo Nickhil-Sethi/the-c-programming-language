@@ -27,14 +27,14 @@ printNode(struct Node *node)
 void
 printNodes(struct Node *head)
 {
-    int listExhausted = 0;
+	int		listExhausted = 0;
 	while (!listExhausted) {
 		printNode(head);
-        if (head->next != NULL) {
-          head = head->next;
-        } else {
-          listExhausted = 1;
-        }
+		if (head->next != NULL) {
+			head = head->next;
+		} else {
+			listExhausted = 1;
+		}
 	}
 	return;
 };
