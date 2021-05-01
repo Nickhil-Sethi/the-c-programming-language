@@ -27,7 +27,7 @@ struct hashelement *insert(hashtable* htable, key key, value value) {
   hashvalue keyhash;
   keyhash = hash(key);
 
-  for(int i=0; i < HASH_TABLE_LENGTH; i++) {
+  for(int i=keyhash; i < HASH_TABLE_LENGTH; i++) {
 
     hashelement current;
     current = htable->elements[i];
