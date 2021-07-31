@@ -26,8 +26,8 @@ struct rectangle *makerectangle(struct point *r, struct point *s) {
 }
 
 char *sprintpoint(struct point *p) {
-  char *f = "Point{%d, %d}";
-  char *s= (char *)malloc(sizeof(char[80]));
+  char *f = "Point{%d, %d}\n";
+  char *s= (char *)malloc(sizeof(*f));
   sprintf(s, f, (*p).x, (*p).y);
   return s;
 };
@@ -41,7 +41,7 @@ void printpoint(struct point *p) {
 void printrectangle(struct rectangle *rect) {
   char *toplefts = sprintpoint(rect->r);
   char *lowerrights = sprintpoint(rect->s);
-  printf("Rectangle{%s, %s}\n", toplefts, lowerrights);
+  printf("Rectangle{\n\t%s \t%s}\n", toplefts, lowerrights);
 }
 int main() {
   struct point *p = makepoint(5, 3);
