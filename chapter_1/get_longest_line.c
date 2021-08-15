@@ -25,18 +25,23 @@ int main() {
 int getinputline(char s[], int lim) {
   char c;
   int i = 0;
+  int end = 0;
 
-  while (i < lim-1 && (c = getchar()) != EOF && c != '\n') {
-    s[i] = c;
+  int found_end = 0;
+  while (!found_end && (c = getchar()) != EOF) {
+    if (i < lim-2) {
+        end = i;
+        s[i] = c;
+    }
+
+    if (c == '\n') {
+        found_end = 1;
+    }
     i++;
   }
 
-  if (c == '\n') {
-    s[i] = c;
-    i++;
-  };
-
-  s[i] = '\0';
+  end++;
+  s[end] = '\0';
   return i;
 };
 
