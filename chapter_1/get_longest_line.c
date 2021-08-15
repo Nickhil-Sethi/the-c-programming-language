@@ -24,10 +24,11 @@ int main() {
 
 int getinputline(char s[], int lim) {
   char c;
-  int i;
+  int i = 0;
 
-  for (i = 0; i < lim-1 && (c = getchar()) != EOF && c != '\n'; i++) {
+  while (i < lim-1 && (c = getchar()) != EOF && c != '\n') {
     s[i] = c;
+    i++;
   }
 
   if (c == '\n') {
